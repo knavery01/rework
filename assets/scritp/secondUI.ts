@@ -77,6 +77,31 @@ export default class NewClass extends cc.Component {
 	@property(cc.Node)
 	allLayout: cc.Node;
 
+	@property(cc.Prefab)
+	iconPrefab1: cc.Prefab;
+
+	@property(cc.Prefab)
+	iconPrefab2: cc.Prefab;
+
+	@property(cc.Prefab)
+	iconPrefab3: cc.Prefab;
+
+	@property(cc.Node)
+	LayoutPlayer: cc.Node;
+
+	@property(cc.Node)
+	LayoutCom1: cc.Node;
+
+	@property(cc.Node)
+	LayoutCom2: cc.Node;
+
+	@property(cc.Node)
+	allSum: cc.Node;
+
+	@property(cc.Label)
+	playerName: cc.Label;
+
+
 	num = 1
 	path = ['img/BoardGame', 'img/Result']
 
@@ -115,7 +140,7 @@ export default class NewClass extends cc.Component {
 	}
 
 	animeOff() {
-		this.rock.getComponent(cc.Animation).play('rock')
+		this.rock.getComponent(cc.Animation).play('chooseRock')
 		this.paper.getComponent(cc.Animation).play('paper')
 		this.scissor.getComponent(cc.Animation).play('scissor')
 	}
@@ -166,20 +191,22 @@ export default class NewClass extends cc.Component {
 		if (sumPs >= 5 || sumCs1 >= 5 || sumCs2 >= 5) {
 			this.allLayout.active = false
 			this.winner.active = true
+			this.allQuery()
 				
 		}
 
 		if (sumPs >= 5) {
 			this.winnerName.string = nickName
-			console.log(this.querySum(sumPlayer));
+			
 		} else if (sumCs1 >= 5) {
 			this.winnerName.string = 'Com1'
-			console.log(this.querySum(sumCom1));
+			
 		} else if (sumCs2 >= 5) {
 			this.winnerName.string = 'Com2'
-			console.log(this.querySum(sumCom2));
+			
 		}
 	}
+
 
 	playAgain() {
 		sumPs = 0
@@ -200,16 +227,37 @@ export default class NewClass extends cc.Component {
 		sumCom2.push(z)
 	}
 
-	querySum(array){
+	allQuery(){
+		this.querySum(sumPlayer,this.iconPrefab1,this.LayoutPlayer)
+		this.querySum(sumCom1,this.iconPrefab2,this.LayoutCom1)
+		this.querySum(sumCom2,this.iconPrefab3,this.LayoutCom2)
+	}
+
+	showStat(){
+		this.allSum.active = true
+		this.playerName.string = nickName
+	}
+
+	closeStat(){
+		this.allSum.active = false
+		this.winner.active = true
+	}
+
+	
+
+	querySum(array,icon,layout){
 		
 		for(let index = array.length-5; index<array.length; index++){
+			let testPrefab = cc.instantiate(icon)
+			layout.addChild(testPrefab)
+
 			if(array[index]==1){
-				console.log("h");
+				this.picChange(testPrefab,this.path[1],'IconResult0')
 				
 			}else if(array[index]==2){
-				console.log("p");
+				this.picChange(testPrefab,this.path[1],'IconResult2')
 			}else{
-				console.log("s");
+				this.picChange(testPrefab,this.path[1],'IconResult1')
 			}
 			
 		}
@@ -270,6 +318,7 @@ export default class NewClass extends cc.Component {
 		this.picChange(this.result1, this.path[1], showResult1)
 		this.picChange(this.result2, this.path[1], showResult2)
 		this.animeOff()
+		this.num = 1
 
 
 
