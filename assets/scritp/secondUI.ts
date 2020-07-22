@@ -11,6 +11,10 @@ var ran
 var sumPs = 0
 var sumCs1 = 0
 var sumCs2 = 0
+var sumPlayer =[]
+var sumCom1 =[]
+var sumCom2 =[]
+
 
 
 @ccclass
@@ -122,9 +126,11 @@ export default class NewClass extends cc.Component {
 	}
 
 	randomBtn() {
-		this.random()
+		this.num = this.random()
+		
+		
 		console.log('ran = ' + ran)
-		this.onSelect(ran)
+		this.onSelect()
 	}
 
 	getImageRes(node, url, name) {
@@ -153,20 +159,25 @@ export default class NewClass extends cc.Component {
 		this.result.active = false
 		this.layout.active = true
 		this.checkWin()
+		this.rock.getComponent(cc.Animation).play("chooseRock")
 	}
 
 	checkWin() {
 		if (sumPs >= 5 || sumCs1 >= 5 || sumCs2 >= 5) {
 			this.allLayout.active = false
 			this.winner.active = true
+				
 		}
 
 		if (sumPs >= 5) {
 			this.winnerName.string = nickName
+			console.log(this.querySum(sumPlayer));
 		} else if (sumCs1 >= 5) {
 			this.winnerName.string = 'Com1'
+			console.log(this.querySum(sumCom1));
 		} else if (sumCs2 >= 5) {
 			this.winnerName.string = 'Com2'
+			console.log(this.querySum(sumCom2));
 		}
 	}
 
@@ -183,17 +194,52 @@ export default class NewClass extends cc.Component {
 		this.com2Score.string = 'Com2 : ' + sc3
 	}
 
-	onSelect(n) {
+	addSum(x,y,z){
+		sumPlayer.push(x)
+		sumCom1.push(y)
+		sumCom2.push(z)
+	}
+
+	querySum(array){
+		
+		for(let index = array.length-5; index<array.length; index++){
+			if(array[index]==1){
+				console.log("h");
+				
+			}else if(array[index]==2){
+				console.log("p");
+			}else{
+				console.log("s");
+			}
+			
+		}
+			
+		
+	}
+
+
+
+	onSelect() {
+
 
 		this.result.active = true
 		this.layout.active = false
-		n = this.num //disable button
+		let n = this.num //disable button
+
 		console.log('n = ' + n)
 		let c1 = this.comChoose()
 		let c2 = this.comChoose()
 		let picP = this.picName(n)
 		let pic1 = this.picName(c1)
 		let pic2 = this.picName(c2)
+
+		this.addSum(n,c1,c2)
+		
+		
+		console.log(sumPlayer)
+		console.log(sumCom1)
+		console.log(sumCom2)
+		
 
 		this.picChange(this.p, this.path[1], picP)
 		this.picChange(this.c1, this.path[1], pic1)
@@ -230,6 +276,7 @@ export default class NewClass extends cc.Component {
 		console.log('p score = ' + x1 + x2);
 		console.log('c1 score = ' + y1 + y2);
 		console.log('c2 score = ' + z1 + z2);
+		
 	}
 
 	onChoose(e, choose) {
@@ -298,9 +345,9 @@ export default class NewClass extends cc.Component {
 				return 0
 			}
 		}
+	
+
+
 	}
-
-
-
 	// update (dt) {}
 }
