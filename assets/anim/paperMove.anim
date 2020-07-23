@@ -1,0 +1,69 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "paperMove",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 2,
+  "sample": 10,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "props": {
+      "position": [
+        {
+          "frame": 0,
+          "value": [
+            161,
+            154.936,
+            0
+          ]
+        },
+        {
+          "frame": 0.5,
+          "value": [
+            161,
+            492.714,
+            0
+          ]
+        },
+        {
+          "frame": 1,
+          "value": [
+            806.079,
+            492.714,
+            0
+          ]
+        },
+        {
+          "frame": 1.5,
+          "value": [
+            806.079,
+            157.476,
+            0
+          ]
+        },
+        {
+          "frame": 2,
+          "value": [
+            161,
+            157.476,
+            0
+          ]
+        }
+      ]
+    },
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "019866c3-0aa7-4aea-bf22-949693d78bdb"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}
