@@ -1,9 +1,9 @@
 {
   "__type__": "cc.AnimationClip",
-  "_name": "paperMove",
+  "_name": "rockMove",
   "_objFlags": 0,
   "_native": "",
-  "_duration": 2,
+  "_duration": 1.5,
   "sample": 10,
   "speed": 1,
   "wrapMode": 1,
@@ -13,40 +13,32 @@
         {
           "frame": 0,
           "value": [
-            161,
-            154.936,
+            104.127,
+            116.825,
             0
           ]
         },
         {
           "frame": 0.5,
           "value": [
-            161,
-            492.714,
+            479.098,
+            486.613,
             0
           ]
         },
         {
           "frame": 1,
           "value": [
-            806.079,
-            492.714,
+            828.15,
+            116.825,
             0
           ]
         },
         {
           "frame": 1.5,
           "value": [
-            806.079,
-            157.476,
-            0
-          ]
-        },
-        {
-          "frame": 2,
-          "value": [
-            161,
-            157.476,
+            104.127,
+            116.825,
             0
           ]
         }
@@ -58,7 +50,7 @@
           {
             "frame": 0,
             "value": {
-              "__uuid__": "019866c3-0aa7-4aea-bf22-949693d78bdb"
+              "__uuid__": "922c011c-0267-4198-9a4e-5a86f52be15b"
             }
           }
         ]
@@ -67,8 +59,8 @@
   },
   "events": [
     {
-      "frame": 2,
-      "func": "changeMove1",
+      "frame": 1.5,
+      "func": "changeMove2",
       "params": []
     }
   ]
