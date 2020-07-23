@@ -25,13 +25,19 @@
           }
         ]
       }
+    },
+    "props": {
+      "y": [
+        {
+          "frame": 0,
+          "value": -32
+        },
+        {
+          "frame": 0.6,
+          "value": -32
+        }
+      ]
     }
   },
-  "events": [
-    {
-      "frame": 0,
-      "func": "click",
-      "params": []
-    }
-  ]
+  "events": []
 }

@@ -3,10 +3,10 @@
   "_name": "paper",
   "_objFlags": 0,
   "_native": "",
-  "_duration": 0.06666666666666667,
+  "_duration": 0.5166666666666667,
   "sample": 60,
   "speed": 1,
-  "wrapMode": 2,
+  "wrapMode": 1,
   "curveData": {
     "comps": {
       "cc.Sprite": {
@@ -18,13 +18,25 @@
             }
           },
           {
-            "frame": 0.05,
+            "frame": 0.5,
             "value": {
               "__uuid__": "85fb0a55-c216-4aa5-aeaa-cd8e6f7f50ea"
             }
           }
         ]
       }
+    },
+    "props": {
+      "y": [
+        {
+          "frame": 0,
+          "value": -141.442
+        },
+        {
+          "frame": 0.5,
+          "value": -141.442
+        }
+      ]
     }
   },
   "events": []
