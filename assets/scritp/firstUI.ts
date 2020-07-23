@@ -41,7 +41,7 @@ export default class NewClass extends cc.Component {
       this.pic1.getComponent(cc.Animation).play("title1")
       this.pic2.getComponent(cc.Animation).play("title2")
       this.pic3.getComponent(cc.Animation).play("title3")
-      this.animMove.getComponent(cc.Animation).play("paperMove")
+      this.changeMove()
      }
 
     start () {
@@ -60,11 +60,13 @@ export default class NewClass extends cc.Component {
       this.block.active = true
     }
 
+    changeMove(){
+      this.animMove.getComponent(cc.Animation).play("paperMove")
+    }
+
     changeMove1(){
       this.animMove.getComponent(cc.Animation).play("rockMove")
     }
-
-
 
     changeMove2(){
       this.animMove.getComponent(cc.Animation).play("scissorMove")
