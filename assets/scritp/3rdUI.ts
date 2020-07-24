@@ -38,10 +38,14 @@ export default class NewClass extends cc.Component {
     // onLoad () {}
 
     start() {
-        this.randomAvatar()
-    }
+        for(let i=0;i<=5;i++){
+            this.randomAvatar()
+        }
 
-    avatarName = ['captain_america_front', 'chuwit_front', 'kim_front', 'mark_front', 'monlo_front', 'pablo_front', 'prayut_front', 'tanee_front', 'trumo_front', 'wonder_woman_front', 'xi_jinpinf_front']
+    }
+    seq = [0,1,2,3,4,5]
+
+    avatarName = ['captain_america_front', 'chuwit_front', 'kim_front', 'mark_front', 'monlo_front', 'pablo_front', 'prayut_front', 'tanee_front', 'trump_front', 'wonder_woman_front', 'xi_jinping_front']
 
     path = 'Avatar/Avatar_Front'
 
@@ -55,17 +59,25 @@ export default class NewClass extends cc.Component {
         this.getImageRes(imageNode, url, name)
     }
 
-    random() {
-        return Math.floor(Math.random() * 10) + 1
+    random(n) {
+        return Math.floor(Math.random() * n) + 1
+    }
+
+    checkSeq(){
+        let y = this.random(5)
+        if(this.seq[y]){
+
+        }
+
     }
 
     randomAvatar() {
-        let x = this.random()
+        let x = this.random(10)
         console.log(this.avatarName[x]);
         let testPrefab = cc.instantiate(this.avatar)
         this.com1.addChild(testPrefab)
         this.picChange(testPrefab, this.path, this.avatarName[x])
-
+        
 
 
         // for (let i = 0; i < 6; i++) {
