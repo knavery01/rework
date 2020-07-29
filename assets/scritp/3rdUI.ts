@@ -13,6 +13,9 @@ export default class NewClass extends cc.Component {
     @property(cc.Prefab)
     avatar: cc.Prefab
 
+    @property(cc.Prefab)
+    showSeq: cc.Prefab
+
     @property(cc.Node)
     com1: cc.Node
 
@@ -53,8 +56,9 @@ export default class NewClass extends cc.Component {
 
     start() {
         this.checkSeq(5)
-        this.getAvatar()
-        this.checkCom()
+        //this.getAvatar()
+        //this.checkCom()
+        this.randomAvatar()
 
 
     }
@@ -68,7 +72,7 @@ export default class NewClass extends cc.Component {
 
     getAvatar() {
         for (let i = 0; i <= 5; i++) {
-            this.randomAvatar(i)
+            //this.randomAvatar(i)
             console.log(i);
 
         }
@@ -105,56 +109,75 @@ export default class NewClass extends cc.Component {
 
     }
 
-    randomAvatar(i) {
-        let x = this.random(10)
-        console.log(this.avatarName1[x]);
-        let testPrefab = cc.instantiate(this.avatar)
-        
-        console.log('fdsfsdfsdfsdffsd', this.layout.getChildByName(`com${i}`));
-        
-        if (i == 1) {
-            this.com1.addChild(testPrefab)
-            //this.com1.active = false
-            this.picChange(testPrefab, this.path[1], this.avatarName2[x])
-            this.seqCom1.string = 'Seq ' + this.newSeq[0]
-        } else if (i == 2) {
-            this.com2.addChild(testPrefab)
-            //this.com2.active = false
-            this.picChange(testPrefab, this.path[0], this.avatarName1[x])
-            this.seqCom2.string = 'Seq ' + this.newSeq[1]
-        } else if (i == 3) {
-            this.com3.addChild(testPrefab)
-           //this.com3.active = false
-            this.picChange(testPrefab, this.path[0], this.avatarName1[x])
-            this.seqCom3.string = 'Seq ' + this.newSeq[2]
-        } else if (i == 4) {
-            this.com4.addChild(testPrefab)
-            //this.com4.active = false
-            this.picChange(testPrefab, this.path[0], this.avatarName1[x])
-            this.seqCom4.string = 'Seq ' + this.newSeq[3]
-        } else if (i == 5) {
-            this.com5.addChild(testPrefab)
-            //this.com5.active = false
-            this.picChange(testPrefab, this.path[1], this.avatarName2[x])
-            testPrefab.is3DNode = true
-            testPrefab.eulerAngles = cc.v3(x, 180, 0)
-            this.seqCom5.string = 'Seq ' + this.newSeq[4]
-        } else {
+    randomAvatar() {
+        //let x = this.random(10)
+        //console.log(this.avatarName1[x]);
+        //let testPrefab = cc.instantiate(this.avatar)
+
+        //console.log('fdsfsdfsdfsdffsd', this.layout.getChildByName(`com${i}`));
+
+        // if (i == 1) {
+        //     this.com1.addChild(testPrefab)
+        //     //this.com1.active = false
+        //     this.picChange(testPrefab, this.path[1], this.avatarName2[x])
+        //     this.seqCom1.string = 'Seq ' + this.newSeq[0]
+        // } else if (i == 2) {
+        //     this.com2.addChild(testPrefab)
+        //     //this.com2.active = false
+        //     this.picChange(testPrefab, this.path[0], this.avatarName1[x])
+        //     this.seqCom2.string = 'Seq ' + this.newSeq[1]
+        // } else if (i == 3) {
+        //     this.com3.addChild(testPrefab)
+        //    //this.com3.active = false
+        //     this.picChange(testPrefab, this.path[0], this.avatarName1[x])
+        //     this.seqCom3.string = 'Seq ' + this.newSeq[2]
+        // } else if (i == 4) {
+        //     this.com4.addChild(testPrefab)
+        //     //this.com4.active = false
+        //     this.picChange(testPrefab, this.path[0], this.avatarName1[x])
+        //     this.seqCom4.string = 'Seq ' + this.newSeq[3]
+        // } else if (i == 5) {
+        //     this.com5.addChild(testPrefab)
+        //     //this.com5.active = false
+        //     this.picChange(testPrefab, this.path[1], this.avatarName2[x])
+        //     testPrefab.is3DNode = true
+        //     testPrefab.eulerAngles = cc.v3(x, 180, 0)
+        //     this.seqCom5.string = 'Seq ' + this.newSeq[4]
+        // } else {
+
+        // }
+
+        for (let i = 1; i < 6; i++) {
+            let x = this.random(10)
+
+            let testPrefab = cc.instantiate(this.avatar)
+            let seqPrefab = cc.instantiate(this.avatar)
+            this.layout.getChildByName(`com${i}`).addChild(testPrefab)
+            
+
+            this.changeSeq(seqPrefab,i)
+
+            if (i == 1) {
+                this.picChange(testPrefab, this.path[1], this.avatarName2[x])
+                this.layout.getChildByName(`com${i}`).addChild(seqPrefab)
+                
+            } else if (i == 5) {
+                this.picChange(testPrefab, this.path[1], this.avatarName2[x])
+                testPrefab.is3DNode = true
+                testPrefab.eulerAngles = cc.v3(x, 180, 0)
+            } else
+                this.picChange(testPrefab, this.path[0], this.avatarName1[x])
+
+            console.log(this.layout.getChildByName(`com${i}`));
 
         }
 
-        // for (let i = 0; i < 6; i++) {
-        //     let x = this.random()
-        //     console.log(i);
+    }
 
-        //     console.log(x);
-
-        //     this.picChange(this.avatar, this.path, this.avatarName[x])
-        //     let testPrefab = cc.instantiate(this.avatar)
-        //     console.log(`com${i}`);
-
-        // 	this[`com${i}`].addChild(testPrefab)
-        // }
+    changeSeq(node,i){
+        console.log(node.string = 'Seq ' + this.newSeq[i-1]);
+        
+        node.string = 'Seq ' + this.newSeq[i-1]
     }
 
     checkCom() {
