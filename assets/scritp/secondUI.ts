@@ -115,6 +115,8 @@ export default class NewClass extends cc.Component {
 		this.pName.string = nickName
 		//console.log(this.pName.string);
 		this.rock.getComponent(cc.Animation).play('chooseRock')
+		console.log('555555');
+		
 	}
 
 	start() {
